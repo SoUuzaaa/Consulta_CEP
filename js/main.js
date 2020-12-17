@@ -10,19 +10,23 @@ function consultarCEP() {
         success: function(response) {
             console.log(response)
             $("#logradouro").html(response.logradouro)
+            $("#complemento").html(response.complemento)
             $("#bairro").html(response.bairro)
             $("#localidade").html(response.localidade)
             $("#uf").html(response.uf)
+            $("#ddd").html(response.ddd)
             $("#titulo_cep").html(`CEP: ${response.cep}`)
             $(".cep").show()
             $(".barra-progresso").hide()
         },
         error: function(response) {
             alert("CEP invalido!")
+            $(".barra-progresso").hide()
         }
     })
 }
 
+//Esconde barra de progresso e o texto CEP, enquanto não fazer a requisição
 $(function() {
     $(".cep").hide()
     $(".barra-progresso").hide()
